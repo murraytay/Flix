@@ -168,13 +168,6 @@
                                         <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W19-RE-nJa">
-                                        <rect key="frame" x="22" y="409" width="337" height="177"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0I-vf-iP9">
                                         <rect key="frame" x="176" y="366" width="158" height="18"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -182,6 +175,23 @@
                                         <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W19-RE-nJa">
+                                        <rect key="frame" x="22" y="409" width="337" height="177"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uny-ju-von">
+                                        <rect key="frame" x="159" y="254" width="129" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="See Similar Movies">
+                                            <color key="titleColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="mFO-A3-jEk" kind="show" identifier="similarMoviesSegue" id="82y-Ks-o7i"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -191,8 +201,10 @@
                         <viewLayoutGuide key="safeArea" id="vSz-YR-ahJ"/>
                     </view>
                     <connections>
+                        <outlet property="SeeSimilarButton" destination="Uny-ju-von" id="DQj-KV-0Ax"/>
                         <outlet property="backgroundView" destination="HfQ-LR-5mc" id="BGo-jd-t58"/>
                         <outlet property="dateLabel" destination="b0I-vf-iP9" id="mei-yy-whf"/>
+                        <outlet property="scrollView" destination="qj9-ro-F5F" id="UZ7-E6-OST"/>
                         <outlet property="smallPosterView" destination="icy-JZ-4L1" id="Itq-ZQ-J89"/>
                         <outlet property="synopsisLabel" destination="W19-RE-nJa" id="PbB-Ky-d0F"/>
                         <outlet property="titleLabel" destination="OFw-KA-Nyd" id="OEO-am-PhT"/>
@@ -206,6 +218,56 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="198" y="920"/>
+        </scene>
+        <!--Similar Movies View Controller-->
+        <scene sceneID="QKW-s4-atx">
+            <objects>
+                <viewController id="mFO-A3-jEk" customClass="SimilarMoviesViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jfX-tI-Urk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9KQ-Cc-PAu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="CcC-9s-pg8">
+                                    <size key="itemSize" width="140" height="189"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SimilarMoviesCell" id="biV-03-d9I" customClass="SimilarMoviesCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="189"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="140" height="189"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pOb-hL-UA0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="140" height="189"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="posterView" destination="pOb-hL-UA0" id="tbl-Q2-ykr"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="0et-aK-m7z"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="9KQ-Cc-PAu" id="4gU-wl-Tko"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="do0-JN-5My" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1034.4000000000001" y="933.28335832083962"/>
         </scene>
         <!--Trailer View Controller-->
         <scene sceneID="Uai-F2-Orj">
@@ -234,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gyM-SK-ap8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="198" y="1725"/>
+            <point key="canvasLocation" x="197.59999999999999" y="1724.8875562218891"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="AXl-em-cJP">
@@ -254,11 +316,13 @@
             </objects>
             <point key="canvasLocation" x="870" y="-1276"/>
         </scene>
-        <!--Item-->
+        <!--Now Playing-->
         <scene sceneID="Sca-vz-ihG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SGY-ox-yLc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="yjM-UG-wi7"/>
+                    <tabBarItem key="tabBarItem" title="Now Playing" image="now_playing_tabbar_item" selectedImage="now_playing_tabbar_item" id="yjM-UG-wi7">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lM5-Ba-Mvy">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -273,11 +337,11 @@
             </objects>
             <point key="canvasLocation" x="199" y="-553"/>
         </scene>
-        <!--Item-->
+        <!--Taylor's Picks-->
         <scene sceneID="iwc-EJ-HAw">
             <objects>
                 <navigationController id="DH5-ij-aN1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="pmU-gF-TOj"/>
+                    <tabBarItem key="tabBarItem" title="Taylor's Picks" image="reel_tabbar_icon" selectedImage="reel_tabbar_icon" id="pmU-gF-TOj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fwy-NU-enJ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -291,4 +355,8 @@
             <point key="canvasLocation" x="1084" y="-509"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="now_playing_tabbar_item" width="21" height="21"/>
+        <image name="reel_tabbar_icon" width="25" height="25"/>
+    </resources>
 </document>

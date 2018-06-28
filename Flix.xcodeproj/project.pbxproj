@@ -23,6 +23,8 @@
 		A8D25AE220E536E800A83C4F /* MovieCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D25AE120E536E800A83C4F /* MovieCollectionCell.m */; };
 		A8D25AE520E57FBB00A83C4F /* TrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D25AE420E57FBB00A83C4F /* TrailerViewController.m */; };
 		A8D25AE720E5828A00A83C4F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D25AE620E5828A00A83C4F /* WebKit.framework */; };
+		A8D25AEA20E5946D00A83C4F /* SimilarMoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D25AE920E5946D00A83C4F /* SimilarMoviesViewController.m */; };
+		A8D25AED20E5952700A83C4F /* SimilarMoviesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D25AEC20E5952700A83C4F /* SimilarMoviesCell.m */; };
 		AD1E521FD5526F9660440ED2 /* libPods-Flix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18541273FFC23780E4841475 /* libPods-Flix.a */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +80,10 @@
 		A8D25AE320E57FBB00A83C4F /* TrailerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrailerViewController.h; sourceTree = "<group>"; };
 		A8D25AE420E57FBB00A83C4F /* TrailerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrailerViewController.m; sourceTree = "<group>"; };
 		A8D25AE620E5828A00A83C4F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		A8D25AE820E5946D00A83C4F /* SimilarMoviesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimilarMoviesViewController.h; sourceTree = "<group>"; };
+		A8D25AE920E5946D00A83C4F /* SimilarMoviesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimilarMoviesViewController.m; sourceTree = "<group>"; };
+		A8D25AEB20E5952700A83C4F /* SimilarMoviesCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimilarMoviesCell.h; sourceTree = "<group>"; };
+		A8D25AEC20E5952700A83C4F /* SimilarMoviesCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimilarMoviesCell.m; sourceTree = "<group>"; };
 		B2CF99AA3656048FF64E74EC /* Pods-FlixUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlixUITests/Pods-FlixUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F33225711B8DF6BC1AC8A88D /* Pods-Flix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flix.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flix/Pods-Flix.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,6 +196,8 @@
 				A8D25AE420E57FBB00A83C4F /* TrailerViewController.m */,
 				A8D25ADA20E49A7400A83C4F /* DetailViewController.h */,
 				A8D25ADB20E49A7400A83C4F /* DetailViewController.m */,
+				A8D25AE820E5946D00A83C4F /* SimilarMoviesViewController.h */,
+				A8D25AE920E5946D00A83C4F /* SimilarMoviesViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -208,6 +216,8 @@
 				A8D25AD820E4617600A83C4F /* MovieCell.m */,
 				A8D25AE020E536E800A83C4F /* MovieCollectionCell.h */,
 				A8D25AE120E536E800A83C4F /* MovieCollectionCell.m */,
+				A8D25AEB20E5952700A83C4F /* SimilarMoviesCell.h */,
+				A8D25AEC20E5952700A83C4F /* SimilarMoviesCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -419,9 +429,11 @@
 				A886FB5420E409C8000B48BD /* main.m in Sources */,
 				A886FB4620E409C6000B48BD /* AppDelegate.m in Sources */,
 				A8D25AE220E536E800A83C4F /* MovieCollectionCell.m in Sources */,
+				A8D25AEA20E5946D00A83C4F /* SimilarMoviesViewController.m in Sources */,
 				A8D25AE520E57FBB00A83C4F /* TrailerViewController.m in Sources */,
 				A8D25AD920E4617600A83C4F /* MovieCell.m in Sources */,
 				A886FB7820E41286000B48BD /* MoviesViewController.m in Sources */,
+				A8D25AED20E5952700A83C4F /* SimilarMoviesCell.m in Sources */,
 				A8D25ADF20E5344800A83C4F /* MoviesGridViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

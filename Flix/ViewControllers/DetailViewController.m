@@ -9,12 +9,15 @@
 #import "DetailViewController.h"
 #import <UIImageView+AFNetworking.h>
 #import "TrailerViewController.h"
+#import "SimilarMoviesViewController.h"
 @interface DetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *smallPosterView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
+@property (weak, nonatomic) IBOutlet UIButton *SeeSimilarButton;
 
 
 @end
@@ -40,6 +43,9 @@
     [self.dateLabel sizeToFit];
     [self.synopsisLabel sizeToFit];
     
+    CGFloat maxHeight = self.synopsisLabel.frame.origin.y + self.synopsisLabel.frame.size.height;
+    self.scrollView.contentSize = CGSizeMake(self.synopsisLabel.frame.size.width, maxHeight);
+    
     
 }
 
@@ -53,11 +59,19 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    TrailerViewController *trailerViewController = [segue destinationViewController];
-    trailerViewController.movie = self.movie;
+    
+    if([[segue identifier] isEqualToString:@"similarMoviesSegue"]){
+        SimilarMoviesViewController *similarMoviesController = [segue destinationViewController];
+        similarMoviesController.selectedMovie = self.movie;
+    } else{
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+        TrailerViewController *trailerViewController = [segue destinationViewController];
+        trailerViewController.movie = self.movie;
+    }
 }
+
+
 
 
 @end
