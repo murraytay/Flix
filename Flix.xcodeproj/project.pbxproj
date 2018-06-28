@@ -21,6 +21,8 @@
 		A8D25ADC20E49A7400A83C4F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D25ADB20E49A7400A83C4F /* DetailViewController.m */; };
 		A8D25ADF20E5344800A83C4F /* MoviesGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D25ADE20E5344800A83C4F /* MoviesGridViewController.m */; };
 		A8D25AE220E536E800A83C4F /* MovieCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D25AE120E536E800A83C4F /* MovieCollectionCell.m */; };
+		A8D25AE520E57FBB00A83C4F /* TrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8D25AE420E57FBB00A83C4F /* TrailerViewController.m */; };
+		A8D25AE720E5828A00A83C4F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D25AE620E5828A00A83C4F /* WebKit.framework */; };
 		AD1E521FD5526F9660440ED2 /* libPods-Flix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18541273FFC23780E4841475 /* libPods-Flix.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +75,9 @@
 		A8D25ADE20E5344800A83C4F /* MoviesGridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesGridViewController.m; sourceTree = "<group>"; };
 		A8D25AE020E536E800A83C4F /* MovieCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieCollectionCell.h; sourceTree = "<group>"; };
 		A8D25AE120E536E800A83C4F /* MovieCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCollectionCell.m; sourceTree = "<group>"; };
+		A8D25AE320E57FBB00A83C4F /* TrailerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrailerViewController.h; sourceTree = "<group>"; };
+		A8D25AE420E57FBB00A83C4F /* TrailerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrailerViewController.m; sourceTree = "<group>"; };
+		A8D25AE620E5828A00A83C4F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		B2CF99AA3656048FF64E74EC /* Pods-FlixUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlixUITests/Pods-FlixUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F33225711B8DF6BC1AC8A88D /* Pods-Flix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flix.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flix/Pods-Flix.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8D25AE720E5828A00A83C4F /* WebKit.framework in Frameworks */,
 				AD1E521FD5526F9660440ED2 /* libPods-Flix.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,6 +114,7 @@
 		53CBC160973D14BAC992F6F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A8D25AE620E5828A00A83C4F /* WebKit.framework */,
 				18541273FFC23780E4841475 /* libPods-Flix.a */,
 				9BC96180ABEA8E51D97794BE /* libPods-FlixTests.a */,
 				03C53B2303A347CF2AFCCB05 /* libPods-FlixUITests.a */,
@@ -146,8 +153,6 @@
 				A886FB4420E409C6000B48BD /* AppDelegate.h */,
 				A886FB4520E409C6000B48BD /* AppDelegate.m */,
 				A886FB4A20E409C6000B48BD /* Main.storyboard */,
-				A8D25ADA20E49A7400A83C4F /* DetailViewController.h */,
-				A8D25ADB20E49A7400A83C4F /* DetailViewController.m */,
 				A886FB4D20E409C8000B48BD /* Assets.xcassets */,
 				A886FB4F20E409C8000B48BD /* LaunchScreen.storyboard */,
 				A886FB5220E409C8000B48BD /* Info.plist */,
@@ -181,6 +186,10 @@
 				A886FB7720E41286000B48BD /* MoviesViewController.m */,
 				A8D25ADD20E5344800A83C4F /* MoviesGridViewController.h */,
 				A8D25ADE20E5344800A83C4F /* MoviesGridViewController.m */,
+				A8D25AE320E57FBB00A83C4F /* TrailerViewController.h */,
+				A8D25AE420E57FBB00A83C4F /* TrailerViewController.m */,
+				A8D25ADA20E49A7400A83C4F /* DetailViewController.h */,
+				A8D25ADB20E49A7400A83C4F /* DetailViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -410,6 +419,7 @@
 				A886FB5420E409C8000B48BD /* main.m in Sources */,
 				A886FB4620E409C6000B48BD /* AppDelegate.m in Sources */,
 				A8D25AE220E536E800A83C4F /* MovieCollectionCell.m in Sources */,
+				A8D25AE520E57FBB00A83C4F /* TrailerViewController.m in Sources */,
 				A8D25AD920E4617600A83C4F /* MovieCell.m in Sources */,
 				A886FB7820E41286000B48BD /* MoviesViewController.m in Sources */,
 				A8D25ADF20E5344800A83C4F /* MoviesGridViewController.m in Sources */,
