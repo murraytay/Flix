@@ -10,11 +10,13 @@
 #import "MovieCell.h"
 #import <UIImageView+AFNetworking.h>
 #import "DetailViewController.h"
-@interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *movies;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (strong,nonatomic) NSArray *filteredData;
 @end
 
 @implementation MoviesViewController
@@ -24,8 +26,7 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
-    
+    self.searchBar.delegate = self;
     
     [self fetchMovies];
     
@@ -70,9 +71,8 @@
             // TODO: Store the movies in a property to use elsewhere
             // TODO: Reload your table view data
             self.movies = dataDictionary[@"results"];
-            for(NSDictionary *movie in self.movies){
-                NSLog(@"%@", movie[@"title"]);
-            }
+            //changed for search view
+            self.filteredData = self.movies;
             [self.activityIndicator stopAnimating];
             [self.tableView reloadData];
         }
@@ -89,14 +89,17 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.movies.count;
+    //changed this for search bar
+    return self.filteredData.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     //GENERIC VERSION
     //UITableViewCell *cell = [[UITableViewCell alloc] init];
     
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
-    NSDictionary *movie = self.movies[indexPath.row];
+    
+    //change for search bar from self.movies to filternedData
+    NSDictionary *movie = self.filteredData[indexPath.row];
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"overview"];
     
@@ -109,7 +112,18 @@
     return cell;
 }
 
-
+//SEARCH BAR STUFF
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if(searchText.length != 0){
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
+            return [evaluatedObject[@"title"] containsString:searchText];
+        }];
+        self.filteredData = [self.movies filteredArrayUsingPredicate:predicate];
+    } else{
+        self.filteredData = self.movies;
+    }
+    [self.tableView reloadData];
+}
 
 #pragma mark - Navigation
 
@@ -125,5 +139,14 @@
     detailViewController.movie = tappedMovie;
 }
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    self.searchBar.showsCancelButton = YES;
+}
+- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    self.searchBar.showsCancelButton = NO;
+    [UIView animateWithDuration:.7 animations:^{
+        [self.searchBar resignFirstResponder];
+    }];
+}
 
 @end
