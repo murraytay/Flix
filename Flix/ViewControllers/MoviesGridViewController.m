@@ -26,11 +26,13 @@
     [self fetchMovies];
     
     UICollectionViewFlowLayout *layout = self.collectionView.collectionViewLayout;
-    
+    layout.minimumInteritemSpacing = 5;
+    layout.minimumLineSpacing = 5;
     CGFloat postersPerLine = 2;
-    CGFloat itemWidth = self.collectionView.frame.size.width/postersPerLine;
+    CGFloat itemWidth = (self.collectionView.frame.size.width - (postersPerLine-1)*layout.minimumInteritemSpacing)/postersPerLine ;
     CGFloat itemHeight = 1.5*itemWidth;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -11,6 +11,7 @@
 #import <UIImageView+AFNetworking.h>
 #import "DetailViewController.h"
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *movies;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -34,6 +35,8 @@
     
 }
 - (void)fetchMovies{
+    // Start the activity indicator
+    [self.activityIndicator startAnimating];
     // Do any additional setup after loading the view.
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
@@ -41,6 +44,22 @@
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error != nil) {
             NSLog(@"%@", [error localizedDescription]);
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies"
+                                                                           message:@"Unable to connect to Network"
+                                                                    preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // create a cancel action
+            UIAlertAction *tryAction = [UIAlertAction actionWithTitle:@"Try Again"
+                                                                   style:UIAlertActionStyleCancel
+                                                                 handler:^(UIAlertAction * _Nonnull action) {
+                                                                     // handle cancel response here. Doing nothing will dismiss the view.
+                                                                 }];
+            // add the cancel action to the alertController
+            [alert addAction:tryAction];
+            [self presentViewController:alert animated:YES completion:^{
+                // optional code for what happens after the alert controller has finished presenting
+            }];
+            
         }
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -53,11 +72,15 @@
             for(NSDictionary *movie in self.movies){
                 NSLog(@"%@", movie[@"title"]);
             }
+            [self.activityIndicator stopAnimating];
             [self.tableView reloadData];
         }
         [self.refreshControl endRefreshing];
     }];
+    
     [task resume];
+    
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
