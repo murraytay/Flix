@@ -59,6 +59,7 @@
             [self presentViewController:alert animated:YES completion:^{
                 // optional code for what happens after the alert controller has finished presenting
             }];
+            [self fetchMovies];
             
         }
         else {
