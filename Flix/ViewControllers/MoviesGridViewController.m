@@ -9,6 +9,7 @@
 #import "MoviesGridViewController.h"
 #import "MovieCollectionCell.h"
 #import <UIImageView+AFNetworking.h>
+#import "DetailViewController.h"
 @interface MoviesGridViewController () <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) NSMutableArray *favoriteMovies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -99,6 +100,7 @@
     
     NSDictionary *movie = self.favoriteMovies[indexPath.item];
     
+    
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = movie[@"poster_path"];
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
@@ -133,6 +135,16 @@
     return self.favoriteMovies.count;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    UICollectionViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
+    NSDictionary *tappedMovie = self.favoriteMovies[indexPath.item];
+    DetailViewController *detailViewController = [segue destinationViewController];
+    detailViewController.movie = tappedMovie;
+}
 
 
 @end

@@ -129,6 +129,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="posterView" destination="3mK-8n-etk" id="Re7-Qg-MxD"/>
+                                            <segue destination="9Ic-cx-Ksj" kind="show" id="4hX-k8-hAf"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -334,6 +335,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="posterView" destination="pOb-hL-UA0" id="tbl-Q2-ykr"/>
+                                            <segue destination="9Ic-cx-Ksj" kind="show" id="3WX-e6-pem"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -441,4 +443,7 @@
         <image name="reel_tabbar_icon" width="25" height="25"/>
         <image name="ticket_tabbar_icon" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="4hX-k8-hAf"/>
+    </inferredMetricsTieBreakers>
 </document>

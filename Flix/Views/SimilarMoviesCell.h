@@ -10,5 +10,4 @@
 
 @interface SimilarMoviesCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
-
 @end

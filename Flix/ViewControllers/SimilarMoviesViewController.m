@@ -9,6 +9,7 @@
 #import "SimilarMoviesViewController.h"
 #import "SimilarMoviesCell.h"
 #import <UIImageView+AFNetworking.h>
+#import "DetailViewController.h"
 @interface SimilarMoviesViewController () <UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *similarMovies;
@@ -78,7 +79,6 @@
     SimilarMoviesCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SimilarMoviesCell" forIndexPath:indexPath];
     
     NSDictionary *movie = self.similarMovies[indexPath.item];
-    
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = movie[@"poster_path"];
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
@@ -110,6 +110,18 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.similarMovies.count;
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    UICollectionViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
+    NSDictionary *tappedMovie = self.similarMovies[indexPath.item];
+    DetailViewController *detailViewController = [segue destinationViewController];
+    detailViewController.movie = tappedMovie;
+}
+
 /*
 #pragma mark - Navigation
 
