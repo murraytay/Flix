@@ -10,6 +10,7 @@
 #import <UIImageView+AFNetworking.h>
 #import "TrailerViewController.h"
 #import "SimilarMoviesViewController.h"
+#import "ReviewsViewController.h"
 @interface DetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -63,6 +64,9 @@
     if([[segue identifier] isEqualToString:@"similarMoviesSegue"]){
         SimilarMoviesViewController *similarMoviesController = [segue destinationViewController];
         similarMoviesController.selectedMovie = self.movie;
+    } else if([[segue identifier] isEqualToString:@"reviewsSegue"]){
+        ReviewsViewController *reviewsViewController = [segue destinationViewController];
+        reviewsViewController.selectedMovie = self.movie;
     } else{
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.

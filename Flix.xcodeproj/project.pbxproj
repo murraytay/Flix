@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		202C5E883A6FE13322EC2675 /* libPods-FlixTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC96180ABEA8E51D97794BE /* libPods-FlixTests.a */; };
 		66FB47396DD8DC3203E98E12 /* libPods-FlixUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C53B2303A347CF2AFCCB05 /* libPods-FlixUITests.a */; };
+		A814605A20E5B7C100DA0A26 /* ReviewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A814605920E5B7C100DA0A26 /* ReviewsViewController.m */; };
+		A814605D20E5B7F000DA0A26 /* ReviewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A814605C20E5B7F000DA0A26 /* ReviewsCell.m */; };
 		A886FB4620E409C6000B48BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A886FB4520E409C6000B48BD /* AppDelegate.m */; };
 		A886FB4C20E409C6000B48BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A886FB4A20E409C6000B48BD /* Main.storyboard */; };
 		A886FB4E20E409C8000B48BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A886FB4D20E409C8000B48BD /* Assets.xcassets */; };
@@ -53,6 +55,10 @@
 		8C9CA399788F2C5CEBDB2726 /* Pods-FlixUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlixUITests/Pods-FlixUITests.release.xcconfig"; sourceTree = "<group>"; };
 		95600C65BA7768CBB7620B6D /* Pods-FlixTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlixTests/Pods-FlixTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9BC96180ABEA8E51D97794BE /* libPods-FlixTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FlixTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A814605820E5B7C100DA0A26 /* ReviewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewsViewController.h; sourceTree = "<group>"; };
+		A814605920E5B7C100DA0A26 /* ReviewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewsViewController.m; sourceTree = "<group>"; };
+		A814605B20E5B7F000DA0A26 /* ReviewsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewsCell.h; sourceTree = "<group>"; };
+		A814605C20E5B7F000DA0A26 /* ReviewsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewsCell.m; sourceTree = "<group>"; };
 		A886FB4120E409C6000B48BD /* Flix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A886FB4420E409C6000B48BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A886FB4520E409C6000B48BD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -198,6 +204,8 @@
 				A8D25ADB20E49A7400A83C4F /* DetailViewController.m */,
 				A8D25AE820E5946D00A83C4F /* SimilarMoviesViewController.h */,
 				A8D25AE920E5946D00A83C4F /* SimilarMoviesViewController.m */,
+				A814605820E5B7C100DA0A26 /* ReviewsViewController.h */,
+				A814605920E5B7C100DA0A26 /* ReviewsViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -218,6 +226,8 @@
 				A8D25AE120E536E800A83C4F /* MovieCollectionCell.m */,
 				A8D25AEB20E5952700A83C4F /* SimilarMoviesCell.h */,
 				A8D25AEC20E5952700A83C4F /* SimilarMoviesCell.m */,
+				A814605B20E5B7F000DA0A26 /* ReviewsCell.h */,
+				A814605C20E5B7F000DA0A26 /* ReviewsCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -431,8 +441,10 @@
 				A8D25AE220E536E800A83C4F /* MovieCollectionCell.m in Sources */,
 				A8D25AEA20E5946D00A83C4F /* SimilarMoviesViewController.m in Sources */,
 				A8D25AE520E57FBB00A83C4F /* TrailerViewController.m in Sources */,
+				A814605A20E5B7C100DA0A26 /* ReviewsViewController.m in Sources */,
 				A8D25AD920E4617600A83C4F /* MovieCell.m in Sources */,
 				A886FB7820E41286000B48BD /* MoviesViewController.m in Sources */,
+				A814605D20E5B7F000DA0A26 /* ReviewsCell.m in Sources */,
 				A8D25AED20E5952700A83C4F /* SimilarMoviesCell.m in Sources */,
 				A8D25ADF20E5344800A83C4F /* MoviesGridViewController.m in Sources */,
 			);
