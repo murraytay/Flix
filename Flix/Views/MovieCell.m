@@ -20,4 +20,25 @@
     CGFloat fontSize = selected ? 29.0 : 21.0;
     self.titleLabel.font = [self.titleLabel.font fontWithSize:fontSize];
 }
+- (IBAction)favoriteButton:(UIButton *)sender {
+    
+    
+    NSMutableArray *oldFavMovies = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"10"] mutableCopy];
+    if(oldFavMovies != nil){
+        [oldFavMovies addObject:self.movie];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:oldFavMovies forKey:@"10"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        NSLog(@"Movie was added");
+    } else{
+        NSMutableArray *noFavMoviesYet = [NSMutableArray arrayWithObject:self.movie];
+        [[NSUserDefaults standardUserDefaults] setObject:noFavMoviesYet forKey:@"10"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        NSLog(@"Movie was added");
+    }
+
+    
+    
+}
 @end

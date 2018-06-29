@@ -10,11 +10,14 @@
 #import "MovieCollectionCell.h"
 #import <UIImageView+AFNetworking.h>
 @interface MoviesGridViewController () <UICollectionViewDelegate,UICollectionViewDataSource>
-@property (nonatomic, strong) NSArray *movies;
+@property (nonatomic, strong) NSMutableArray *favoriteMovies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
 @end
 
 @implementation MoviesGridViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,7 +26,7 @@
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
 
-    [self fetchMovies];
+    //[self fetchMovies];
     
     UICollectionViewFlowLayout *layout = self.collectionView.collectionViewLayout;
     layout.minimumInteritemSpacing = 5;
@@ -33,6 +36,20 @@
     CGFloat itemHeight = 1.5*itemWidth;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
     
+    
+
+    
+}
+
+
+- (void) viewWillAppear:(BOOL)animated{
+    NSMutableArray *idk = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"10"] mutableCopy];
+    if(idk != nil){
+        self.favoriteMovies = idk;
+    } else{
+        self.favoriteMovies = [NSMutableArray new];
+    }
+    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,30 +57,30 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)fetchMovies{
-    // Do any additional setup after loading the view.
-    NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/449176/similar?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error != nil) {
-            NSLog(@"%@", [error localizedDescription]);
-        }
-        else {
-            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            
-            NSLog(@"%@", dataDictionary);
-            // TODO: Get the array of movies
-            // TODO: Store the movies in a property to use elsewhere
-            // TODO: Reload your table view data
-            self.movies = dataDictionary[@"results"];
-            [self.collectionView reloadData];
-            
-        }
-        
-    }];
-    [task resume];
-}
+//- (void)fetchMovies{
+//    // Do any additional setup after loading the view.
+//    NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/449176/similar?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=1"];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+//    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//        if (error != nil) {
+//            NSLog(@"%@", [error localizedDescription]);
+//        }
+//        else {
+//            NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//
+//            NSLog(@"%@", dataDictionary);
+//            // TODO: Get the array of movies
+//            // TODO: Store the movies in a property to use elsewhere
+//            // TODO: Reload your table view data
+//            self.movies = dataDictionary[@"results"];
+//            [self.collectionView reloadData];
+//
+//        }
+//
+//    }];
+//    [task resume];
+//}
 
 /*
 #pragma mark - Navigation
@@ -78,7 +95,9 @@
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];
     
-    NSDictionary *movie = self.movies[indexPath.item];
+    
+    
+    NSDictionary *movie = self.favoriteMovies[indexPath.item];
     
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = movie[@"poster_path"];
@@ -111,7 +130,7 @@
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.movies.count;
+    return self.favoriteMovies.count;
 }
 
 

@@ -35,6 +35,7 @@
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
 }
+
 - (void)fetchMovies{
     // Start the activity indicator
     [self.activityIndicator startAnimating];
@@ -81,8 +82,9 @@
     
     [task resume];
     
-    
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -102,7 +104,15 @@
     NSDictionary *movie = self.filteredData[indexPath.row];
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"overview"];
+    cell.movie = movie;
+//    [self.favoriteMoviesArray addObject:movie];
+//    
+
     
+    
+//    cell.favoriteButton.tag = indexPath;
+
+
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = movie[@"poster_path"];
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
