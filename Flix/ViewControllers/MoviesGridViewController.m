@@ -44,7 +44,7 @@
 
 
 - (void) viewWillAppear:(BOOL)animated{
-    NSMutableArray *idk = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"10"] mutableCopy];
+    NSMutableArray *idk = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"MovieFavorites"] mutableCopy];
     if(idk != nil){
         self.favoriteMovies = idk;
     } else{

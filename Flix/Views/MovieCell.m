@@ -23,16 +23,26 @@
 - (IBAction)favoriteButton:(UIButton *)sender {
     
     
-    NSMutableArray *oldFavMovies = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"10"] mutableCopy];
-    if(oldFavMovies != nil){
+    NSMutableArray *oldFavMovies = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"MovieFavorites"] mutableCopy];
+    BOOL repeat = NO;
+    for(NSDictionary* oldMovie in oldFavMovies){
+        if([oldMovie[@"title"] isEqualToString:self.movie[@"title"]]){
+            repeat = YES;
+        }
+    }
+    if(oldFavMovies != nil && repeat != YES){
+        
+        
         [oldFavMovies addObject:self.movie];
         
-        [[NSUserDefaults standardUserDefaults] setObject:oldFavMovies forKey:@"10"];
+        [[NSUserDefaults standardUserDefaults] setObject:oldFavMovies forKey:@"MovieFavorites"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         NSLog(@"Movie was added");
+    } else if(oldFavMovies != nil && repeat == YES){
+        NSLog(@"no movie was added, repeat");
     } else{
         NSMutableArray *noFavMoviesYet = [NSMutableArray arrayWithObject:self.movie];
-        [[NSUserDefaults standardUserDefaults] setObject:noFavMoviesYet forKey:@"10"];
+        [[NSUserDefaults standardUserDefaults] setObject:noFavMoviesYet forKey:@"MovieFavorites"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         NSLog(@"Movie was added");
@@ -41,4 +51,6 @@
     
     
 }
+
+
 @end
