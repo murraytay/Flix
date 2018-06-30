@@ -12,7 +12,6 @@
 #import "DetailViewController.h"
 @interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
@@ -36,6 +35,9 @@
     
 }
 
+-(void) viewWillAppear:(BOOL)animated{
+    [self.tableView reloadData];
+}
 - (void)fetchMovies{
     // Start the activity indicator
     [self.activityIndicator startAnimating];
@@ -105,10 +107,22 @@
     cell.titleLabel.text = movie[@"title"];
     cell.synopsisLabel.text = movie[@"overview"];
     cell.movie = movie;
+    
 //    [self.favoriteMoviesArray addObject:movie];
 //    
 
-    
+    NSMutableArray *oldFavMovies = [[[NSUserDefaults standardUserDefaults] arrayForKey:@"MovieFavorites"] mutableCopy];
+    BOOL inFavorites = NO;
+    for(NSDictionary* oldMovie in oldFavMovies){
+        if([oldMovie[@"title"] isEqualToString:movie[@"title"]]){
+            inFavorites = YES;
+        }
+    }
+    if(inFavorites){
+        [cell.favoriteButton setImage:[UIImage imageNamed:@"projector_tabbar_item.png"] forState:UIControlStateNormal];
+    } else{
+        [cell.favoriteButton setImage:[UIImage imageNamed:@"ticket_tabbar_icon.png"] forState:UIControlStateNormal];
+    }
     
 //    cell.favoriteButton.tag = indexPath;
 

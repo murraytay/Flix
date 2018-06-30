@@ -39,7 +39,11 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         NSLog(@"Movie was added");
     } else if(oldFavMovies != nil && repeat == YES){
-        NSLog(@"no movie was added, repeat");
+        [oldFavMovies removeObject:self.movie];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:oldFavMovies forKey:@"MovieFavorites"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        NSLog(@"deleted");
     } else{
         NSMutableArray *noFavMoviesYet = [NSMutableArray arrayWithObject:self.movie];
         [[NSUserDefaults standardUserDefaults] setObject:noFavMoviesYet forKey:@"MovieFavorites"];
@@ -48,6 +52,7 @@
         NSLog(@"Movie was added");
     }
 
+    
     
     
 }
